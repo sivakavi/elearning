@@ -35,7 +35,7 @@
                 </div>
             </form>
 
-            <a class="btn btn-link" href="{{ route('colleges.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
+            <a class="btn btn-link" href="{{ route('admin.colleges.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
 
         </div>
     </div>

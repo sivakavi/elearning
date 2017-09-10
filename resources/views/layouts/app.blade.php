@@ -30,7 +30,7 @@
         {{ Html::script(mix('assets/app/js/app.js')) }}
 
         {{--Laravel Js Variables--}}
-        @tojs
+        
 
         {{--Scripts--}}
         @yield('scripts')

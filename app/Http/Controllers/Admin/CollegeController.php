@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -17,7 +17,7 @@ class CollegeController extends Controller {
 	{
 		$colleges = College::orderBy('id', 'asc')->paginate(10);
 
-		return view('colleges.index', compact('colleges'));
+		return view('admin.colleges.index', compact('colleges'));
 	}
 
 	/**
@@ -27,7 +27,7 @@ class CollegeController extends Controller {
 	 */
 	public function create()
 	{
-		return view('colleges.create');
+		return view('admin.colleges.create');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class CollegeController extends Controller {
 
 		$college->save();
 
-		return redirect()->route('colleges.index')->with('message', 'Item created successfully.');
+		return redirect()->route('admin.colleges.index')->with('message', 'Item created successfully.');
 	}
 
 	/**
@@ -62,7 +62,7 @@ class CollegeController extends Controller {
 	{
 		$college = College::findOrFail($id);
 
-		return view('colleges.show', compact('college'));
+		return view('admin.colleges.show', compact('college'));
 	}
 
 	/**
@@ -75,7 +75,7 @@ class CollegeController extends Controller {
 	{
 		$college = College::findOrFail($id);
 
-		return view('colleges.edit', compact('college'));
+		return view('admin.colleges.edit', compact('college'));
 	}
 
 	/**
@@ -98,7 +98,7 @@ class CollegeController extends Controller {
 
 		$college->save();
 
-		return redirect()->route('colleges.index')->with('message', 'Item updated successfully.');
+		return redirect()->route('admin.colleges.index')->with('message', 'Item updated successfully.');
 	}
 
 	/**
@@ -112,7 +112,7 @@ class CollegeController extends Controller {
 		$college = College::findOrFail($id);
 		$college->delete();
 
-		return redirect()->route('colleges.index')->with('message', 'Item deleted successfully.');
+		return redirect()->route('admin.colleges.index')->with('message', 'Item deleted successfully.');
 	}
 
 }

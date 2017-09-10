@@ -44,7 +44,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('colleges.index') }}">
+                        <a href="{{ route('admin.colleges.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_1_2') }}
                         </a>
@@ -55,13 +55,13 @@
                 <h3>{{ __('views.backend.section.navigation.sub_header_2') }}</h3>
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{ route('admin.users') }}">
+                        <a href="{{ route('admin.categories.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_1') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.users') }}">
+                        <a href="{{ route('admin.categories.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_2') }}
                         </a>
@@ -70,6 +70,12 @@
                         <a href="{{ route('admin.users') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_3') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.users') }}">
+                            <i class="fa fa-key" aria-hidden="true"></i>
+                            {{ __('views.backend.section.navigation.menu_2_4') }}
                         </a>
                     </li>
                 </ul>
