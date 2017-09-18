@@ -48,9 +48,7 @@
 
                         @if(config('auth.users.registration'))
                             <div class="separator">
-                                <p class="change_link">{{ __('views.auth.login.message_1') }}
-                                    <a href="{{ route('register') }}" class="to_register"> {{ __('views.auth.login.action_2') }} </a>
-                                </p>
+                                
 
                                 <div class="clearfix"></div>
                                 <br/>

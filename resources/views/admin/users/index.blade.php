@@ -3,6 +3,12 @@
 @section('title', __('views.admin.users.index.title'))
 
 @section('content')
+    <div class="page-header clearfix">
+        <h1>
+            <a class="btn btn-success pull-right" href="{{ route('admin.users.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
+        </h1>
+
+    </div>
     <div class="row">
         <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
                width="100%">

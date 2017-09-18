@@ -19,9 +19,7 @@ class UsersRolesSeeder extends Seeder
         $this->truncate('users_roles');
 
         $data = [
-            'admin@portal.com' => 'administrator',
-            'staff@portal.com' => 'staff',
-            'student@portal.com' => 'student',
+            'admin@portal.com' => 'administrator'
         ];
 
         foreach ($data as $email => $role) {

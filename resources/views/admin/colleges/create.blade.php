@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1><i class="glyphicon glyphicon-plus"></i> Colleges / Create </h1>
+        <h1>Colleges / Create </h1>
     </div>
     @include('error')
 

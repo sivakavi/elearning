@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.categories.index') }}">
+                        <a href="{{ route('admin.sub_categories.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_2') }}
                         </a>

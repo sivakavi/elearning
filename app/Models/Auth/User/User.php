@@ -74,7 +74,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'active', 'confirmation_code', 'confirmed'];
+    protected $fillable = ['email', 'password', 'active', 'confirmed','college_id','name'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -89,4 +89,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function contact()
+    {
+        return $this->belongsTo('App\Contact');
+    }
 }

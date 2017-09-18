@@ -7,6 +7,8 @@ use App\Models\Auth\User\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use App\College;
+use App\Contact;
 
 class UserController extends Controller
 {
@@ -17,7 +19,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return view('admin.users.index', ['users' => User::with('roles')->sortable(['email' => 'asc'])->paginate()]);
+        return view('admin.users.index', ['users' => User::with('roles')->where('email', '!=' ,'admin@portal.com')->sortable(['email' => 'asc'])->paginate()]);
     }
 
     /**
@@ -27,7 +29,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $colleges = College::all(['id', 'name']);
+        return view('admin.users.create', compact('colleges'));
     }
 
     /**
@@ -38,7 +41,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contactDetails = $request->only([
+            'fname', 'lname', 'dob', 
+            'cemail', 'phno', 'address',
+            'emergency_person', 'emergency_contact_no'
+        ]);
+
+        $destinationPath = public_path(). '/uploads/';
+        $file  = $request->only('photo');
+        $fileExtenstion = \File::extension($file['photo']->getClientOriginalName());
+        $filename = strtotime("now").".".$fileExtenstion;
+        $file['photo']->move($destinationPath, $filename);
+        $contactDetails['photo'] = $filename;
+
+        $contact = Contact::create($contactDetails);
+
+        $role = Role::where('name', $request->only('role'))->first();
+
+        $userDetails = $request->only(['email', 'password', 'active', 'confirmed', 'college_id']);
+        $userDetails['password'] = bcrypt($userDetails['password']);
+        $userDetails['name'] = $contactDetails['fname'];
+        $user = User::create($userDetails);
+
+        $user->contact()->associate($contact);
+
+        $user->roles()->attach($role);
+        $user->save();
+
+        return redirect()->intended(route('admin.users'));
     }
 
     /**
