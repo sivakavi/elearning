@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <form action="{{ route('admin.sub_categories.update', $sub_category->id) }}" method="POST">
+            <form action="{{ route('admin.sub_categories.update', $sub_category->id) }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -21,11 +21,12 @@
                        @endif
                     </div>
                     <div class="form-group @if($errors->has('file')) has-error @endif">
-                       <label for="file-field">File</label>
-                    <input type="text" id="file-field" name="file" class="form-control" value="{{ is_null(old("file")) ? $sub_category->file : old("file") }}"/>
-                       @if($errors->has("file"))
-                        <span class="help-block">{{ $errors->first("file") }}</span>
-                       @endif
+                        <label class="control-label col-sm-3" for="file">File:</label>
+                        <input type="file" class="form-control" name="file" id="file" required>
+                        @if($errors->has("file"))
+                            <span class="help-block">{{ $errors->first("file") }}</span>
+                        @endif
+                        <a href="{{ asset('uploads/'.$sub_category->file) }}">{{ $sub_category->file }}</a>
                     </div>
                     <div class="form-group @if($errors->has('category_id')) has-error @endif">
                        <label for="category_id-field">Category</label>

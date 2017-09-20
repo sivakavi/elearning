@@ -18,7 +18,7 @@
                 </div>
                     <div class="form-group">
                      <label for="file">FILE</label>
-                     <p class="form-control-static">{{$sub_category->file}}</p>
+                     <p class="form-control-static"><a href="{{ asset('uploads/'.$sub_category->file) }}">{{ $sub_category->file }}</a></p>
                 </div>
                     <div class="form-group">
                      <label for="category_id">CATEGORY</label>

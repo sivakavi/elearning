@@ -1,13 +1,15 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseControllers;
 
 use App\SubCategory;
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSubCategory;
 
-class SubCategoryController extends Controller {
+
+class SubCategoryController extends BaseControllers {
 
 	/**
 	 * Display a listing of the resource.
@@ -38,12 +40,12 @@ class SubCategoryController extends Controller {
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(StoreSubCategory $request)
 	{
 		$sub_category = new SubCategory();
 
 		$sub_category->name = $request->input("name");
-        $sub_category->file = $request->input("file");
+        $sub_category->file = $this->fileUpload($request->only('file'), 'file');
         $sub_category->category_id = $request->input("category_id");
 
 		$sub_category->save();
@@ -83,12 +85,12 @@ class SubCategoryController extends Controller {
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function update(Request $request, $id)
+	public function update(StoreSubCategory $request, $id)
 	{
 		$sub_category = SubCategory::findOrFail($id);
 
 		$sub_category->name = $request->input("name");
-        $sub_category->file = $request->input("file");
+        $sub_category->file = $this->fileUpload($request->only('file'), 'file');
         $sub_category->category_id = $request->input("category_id");
 
 		$sub_category->save();

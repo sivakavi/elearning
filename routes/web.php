@@ -54,6 +54,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource("colleges","CollegeController");
     Route::resource("categories","CategoryController");
     Route::resource("sub_categories","SubCategoryController");
+    Route::resource("tests","TestController");
+
+    Route::get('questions/create', 'QuestionController@create')->name('questions.create');
+    Route::post('questions/store', 'QuestionController@store')->name('questions.store');
+    Route::get('getsubcategory', 'QuestionController@getSubCategory')->name('getSubCategory');
+    Route::get('getquestionlists', 'QuestionController@getQuestionLists')->name('questions.getQuestionLists');
+    Route::get('questions', 'QuestionController@index')->name('questions.index');
 });
 
 

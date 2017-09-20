@@ -49,11 +49,6 @@
                             {{ __('views.backend.section.navigation.menu_1_2') }}
                         </a>
                     </li>
-                </ul>
-            </div>
-            <div class="menu_section">
-                <h3>{{ __('views.backend.section.navigation.sub_header_2') }}</h3>
-                <ul class="nav side-menu">
                     <li>
                         <a href="{{ route('admin.categories.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
@@ -67,19 +62,25 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.users') }}">
+                        <a href="{{ route('admin.tests.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_3') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.users') }}">
+                        <a href="{{ route('admin.questions.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_4') }}
                         </a>
                     </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-key" aria-hidden="true"></i>
+                            {{ __('views.backend.section.navigation.menu_2_5') }}
+                        </a>
+                    </li>
                 </ul>
-            </div>
+                </div>
         </div>
         <!-- /sidebar menu -->
     </div>
