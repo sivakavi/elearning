@@ -21,7 +21,6 @@ composer.lock
 phpunit.phar
 
 public/assets
-public/uploads
 public/mix-manifest.json
 
 .env
