@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group @if($errors->has('file')) has-error @endif">
                         <label class="control-label col-sm-3" for="file">File:</label>
-                        <input type="file" class="form-control" name="file" id="file" required>
+                        <input type="file" class="form-control" name="file" id="file">
                         @if($errors->has("file"))
                             <span class="help-block">{{ $errors->first("file") }}</span>
                         @endif

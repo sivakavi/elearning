@@ -55,12 +55,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource("categories","CategoryController");
     Route::resource("sub_categories","SubCategoryController");
     Route::resource("tests","TestController");
+    Route::resource("groups","GroupController");
 
     Route::get('questions/create', 'QuestionController@create')->name('questions.create');
     Route::post('questions/store', 'QuestionController@store')->name('questions.store');
     Route::get('getsubcategory', 'QuestionController@getSubCategory')->name('getSubCategory');
     Route::get('getquestionlists', 'QuestionController@getQuestionLists')->name('questions.getQuestionLists');
     Route::get('questions', 'QuestionController@index')->name('questions.index');
+    
+    Route::delete('questions/{id}', 'QuestionController@destroy')->name('questions.destroy');
+    Route::get('assigns', 'AssignController@index')->name('assigns.index');
+    Route::post('assigns/store', 'AssignController@store')->name('assigns.store');
+    Route::get('getGroupSubCategoryList', 'AssignController@getGroupSubCategoryList')->name('assigns.getGroupSubCategoryList');
+    Route::get('getGroup', 'AssignController@getGroup')->name('assigns.getGroup');
+    
 });
 
 

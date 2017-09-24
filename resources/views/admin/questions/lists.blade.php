@@ -21,6 +21,7 @@
                         <th>Answer 3</th>
                         <th>Answer 4</th>
                         <th>Correct Answer</th>
+                        <th class="text-right">OPTIONS</th>
                         </tr>
                     </thead>
 
@@ -33,7 +34,12 @@
                                 <td>{{$question->answer3}}</td>
                                 <td>{{$question->answer4}}</td>
                                 <td>Answer {{$question->correct_answer}}</td>
-                                
+                                <td class="text-right">
+
+                                    <form action="{{ route('admin.questions.destroy', $question->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</button>
                                     </form>
                                 </td>
                             </tr>

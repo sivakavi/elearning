@@ -90,7 +90,9 @@ class SubCategoryController extends BaseControllers {
 		$sub_category = SubCategory::findOrFail($id);
 
 		$sub_category->name = $request->input("name");
-        $sub_category->file = $this->fileUpload($request->only('file'), 'file');
+		if ($request->hasFile('file')) {
+			$sub_category->file = $this->fileUpload($request->only('file'), 'file');
+		}
         $sub_category->category_id = $request->input("category_id");
 
 		$sub_category->save();
