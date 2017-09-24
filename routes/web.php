@@ -50,6 +50,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('users/{user}', 'UserController@show')->name('users.show');
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
     Route::put('users/{user}', 'UserController@update')->name('users.update');
+    Route::get('student', 'UserController@studentindex')->name('users.studentindex');
+    Route::get('studentList', 'UserController@studentList')->name('users.studentList');
+    
     Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy');
     Route::resource("colleges","CollegeController");
     Route::resource("categories","CategoryController");
@@ -68,6 +71,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('assigns/store', 'AssignController@store')->name('assigns.store');
     Route::get('getGroupSubCategoryList', 'AssignController@getGroupSubCategoryList')->name('assigns.getGroupSubCategoryList');
     Route::get('getGroup', 'AssignController@getGroup')->name('assigns.getGroup');
+
+    Route::post('userImport', 'UserController@importExcel')->name('users.importExcel');
     
 });
 

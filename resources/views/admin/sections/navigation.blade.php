@@ -43,6 +43,14 @@
                             {{ __('views.backend.section.navigation.menu_1_1') }}
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('admin.users.studentindex') }}">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            {{ __('views.backend.section.navigation.menu_1_3') }}
+                        </a>
+                    </li>
+
                     <li>
                         <a href="{{ route('admin.colleges.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>

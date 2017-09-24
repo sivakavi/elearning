@@ -19,7 +19,24 @@ class UserController extends BaseControllers
      */
     public function index(Request $request)
     {
-        return view('admin.users.index', ['users' => User::with('roles')->where('email', '!=' ,'admin@portal.com')->sortable(['email' => 'asc'])->paginate()]);
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'staff');})->paginate();
+        return view('admin.users.index', ['users' => $users]);
+    }
+
+    public function studentIndex()
+    {
+        $colleges = College::all(['id', 'name']);
+        return view('admin.users.studentIndex', compact('colleges'));
+    }
+
+    public function studentList(Request $request)
+    {
+        $college_id = $request->input('college_id');
+        $group_id = $request->input('group_id');
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'student');})->where('college_id', $college_id)->where('group_id', $group_id)->paginate(1);
+        return view('admin.users.studentList', ['users' => $users]);
     }
 
     /**
@@ -144,5 +161,62 @@ class UserController extends BaseControllers
     public function destroy($id)
     {
         //
+    }
+
+    public function importExcel(Request $request)
+	{
+        $validator = Validator::make($request->all(), [
+            'import_file' => 'required|mimes:xlsx'
+        ]);
+        
+        if ($validator->fails()) return redirect()->back()->withErrors($validator->errors());
+		if ($request->hasFile('import_file')) {
+			$path = $request->file('import_file')->getRealPath();
+			$rows = \Excel::load($path, function($reader) {
+            })->toArray();
+            $role = Role::where('name', 'student')->first();
+            $this->deleteGroupUser($rows[0]['group_id']);
+			foreach($rows as $row){
+                if(!is_null($row['official_email'])){
+                    $contactDetails['fname'] = $row['firstname'];
+                    $contactDetails['lname'] = $row['lastname'];
+                    $contactDetails['dob'] = $row['dateofbirth'];
+                    $contactDetails['cemail'] = $row['contactemail'];
+                    $contactDetails['phno'] = $row['phonenumber'];
+                    $contactDetails['address'] = $row['address'];
+                    $contactDetails['emergency_person'] = $row['emergecy_contact_person'];
+                    $contactDetails['emergency_contact_no'] = $row['emergecy_contact_person_number'];
+    
+                    $userDetails['name'] = $row['firstname'];
+                    $userDetails['email'] = $row['official_email'];
+                    $userDetails['password'] = bcrypt($row['password']);
+                    $userDetails['active'] = $row['active'];
+                    $userDetails['confirmed'] = $row['confirmed'];
+                    $userDetails['college_id'] = $row['college_id'];
+                    $userDetails['group_id'] = $row['group_id'];
+
+                    \DB::transaction(function() use ($userDetails, $contactDetails, $role) {
+                        $user = User::create($userDetails);
+                        $contact = Contact::create($contactDetails);
+                        $user->contact()->associate($contact);
+                        $user->roles()->attach($role);
+                        $user->save();
+                    });
+                }
+
+            }
+		}
+		return back();
+    }
+    
+    private function deleteGroupUser($group_id)
+    {
+        $users = User::where('group_id', $group_id)->get();
+        foreach ($users as $user) {
+            $user->contact()->delete();
+            $user->roles()->detach();
+        }
+        \DB::table('users')->where('group_id', $group_id)->delete();
+        
     }
 }
