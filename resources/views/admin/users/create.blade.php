@@ -63,15 +63,6 @@
             </div>
         </div>
 
-        <br><h4>Photo Upload</h4><br>
-
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="photo">Photo:</label>
-            <div class="col-sm-6">
-                <input type="file" class="form-control" name="photo" id="photo" required>
-            </div>
-        </div>
-
         <br><h4>User Information</h4><br>
 
         <div class="form-group">
@@ -88,11 +79,11 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hide">
             <label class="control-label col-sm-3" for="manager">Role:</label>
             <div class="col-sm-6">
-                <input id="staff" type="radio" name="role" value="staff" required> <label for="staff">Staff</label>
-                <input id="student" type="radio" name="role" value="student"> <label for="student">Student</label>
+                <input id="staff" type="radio" name="role" value="staff" @if(app('request')->input('role')=="staff") checked @endif> <label for="staff">Staff</label>
+                <input id="student" type="radio" name="role" value="student"  @if(app('request')->input('role')=="student") checked @endif> <label for="student">Student</label>
             </div>
         </div>
 
@@ -115,11 +106,19 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="confirmed   ">College:</label>
             <div class="col-sm-6">
-                <select class="form-control" name="college_id" required>
+                <select class="form-control" name="college_id" id="college_id" required>
                     <option value="">Select any one college...</option>
                     @foreach($colleges as $college)
                         <option value="{{$college->id}}">{{$college->name}}</option>
                     @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group @if(app('request')->input('role')=='staff') hide @endif">
+            <label class="control-label col-sm-3" for="group_id">Group:</label>
+            <div class="col-sm-6">
+                <select id = "group_id" class="form-control" name="group_id" @if(app('request')->input('role')=="student") required @endif>
+                    <option value="">Select any one Group...</option>
                 </select>
             </div>
         </div>
@@ -130,4 +129,34 @@
             </div>
         </div>
     </form>
+@endsection
+@section('scripts')
+    @parent
+    <script>
+        $( document ).ready(function() {
+            $( "#college_id" ).change(function() {
+                var ajaxUrl = "{{ route('admin.assigns.getGroup') }}";
+                var $select = $('#group_id');
+                $select.find('option').remove();
+                if($(this).val()!=""){
+                    $.ajax({
+                        url: ajaxUrl,
+                        type: 'GET',
+                        data: {
+                            college_id: $(this).val()
+                        },
+                        success:function(response) {
+                            var $select = $('#group_id');
+                            $select.find('option').remove();
+                            $select.append('<option value=' + '' + '>' + 'Select any one Group...' + '</option>');
+                            $.each(response,function(key, value) 
+                            {
+                                $select.append('<option value=' + key + '>' + value + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

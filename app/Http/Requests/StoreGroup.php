@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSubCategory extends FormRequest
+class StoreGroup extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,8 @@ class StoreSubCategory extends FormRequest
     {
         return [
             'name' => 'required',
-            'file' => 'sometimes|required|mimes:pdf',
-            'category_id' => 'required',
+            'expiry' => 'required|date|after:tomorrow',
+            'college_id' => 'required|numeric',
         ];
     }
 }

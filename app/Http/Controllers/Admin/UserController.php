@@ -46,9 +46,9 @@ class UserController extends BaseControllers
                 'cemail', 'phno', 'address',
                 'emergency_person', 'emergency_contact_no'
             ]);
-            $contactDetails['photo'] = $this->fileUpload($request->only('photo'), 'photo');
+            
             $role = Role::where('name', $request->only('role'))->first();
-            $userDetails = $request->only(['email', 'password', 'active', 'confirmed', 'college_id']);
+            $userDetails = $request->only(['email', 'password', 'active', 'confirmed', 'college_id', 'group_id']);
             $userDetails['password'] = bcrypt($userDetails['password']);
             $userDetails['name'] = $contactDetails['fname'];
 

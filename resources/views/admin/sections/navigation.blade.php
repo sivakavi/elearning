@@ -50,6 +50,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.groups.index') }}">
+                            <i class="fa fa-key" aria-hidden="true"></i>
+                            {{ __('views.backend.section.navigation.menu_2_6') }}
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.categories.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_1') }}
@@ -74,7 +80,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
+                        <a href="{{ route('admin.assigns.index') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_5') }}
                         </a>

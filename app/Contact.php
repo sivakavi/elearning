@@ -14,6 +14,6 @@ class Contact extends Model
     protected $fillable = [
         'fname', 'lname', 'dob', 
         'cemail', 'phno', 'address',
-        'emergency_person', 'emergency_contact_no', 'photo'
+        'emergency_person', 'emergency_contact_no'
     ];
 }
