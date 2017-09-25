@@ -37,6 +37,7 @@
 
 @section('styles')
     {{ Html::style(mix('assets/admin/css/admin.css')) }}
+    {{ Html::style(mix('assets/admin/css/dashboard.css')) }}
 @endsection
 
 @section('scripts')
