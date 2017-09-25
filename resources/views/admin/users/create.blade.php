@@ -3,8 +3,8 @@
 @section('content')
     <div class="page-header">
         <h1>Users / Create </h1>
-        <a href="{{ asset('assets/user.xlsx') }}">Sample User Excel</a>
-         @if(app('request')->input('role')=="student")
+        @if(app('request')->input('role')=="student")
+            <a href="{{ asset('excel/user.xlsx') }}">Sample User Excel</a>
             <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ route('admin.users.importExcel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="file" name="import_file" />
