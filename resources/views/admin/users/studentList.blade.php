@@ -1,16 +1,15 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'Staffs')
+@section('title', __('views.admin.users.index.title'))
 
 @section('content')
     <div class="page-header clearfix">
-    </div>
-    <div>
         <h1>
-            <a class="btn btn-success pull-right" href="{{ route('admin.users.create') }}?role=staff"><i class="glyphicon glyphicon-plus"></i> Create Staff</a>
+            <a class="btn btn-success pull-right" href="{{ route('admin.users.create') }}?role=student"><i class="glyphicon glyphicon-plus"></i> Create Student</a>
         </h1>
+
     </div>
-    
+    @if($users->count())
     <div class="row">
         <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
                width="100%">
@@ -66,7 +65,10 @@
             </tbody>
         </table>
         <div class="pull-right">
-            {{ $users->links() }}
+            {{ $users->appends(request()->input())->links() }}
         </div>
+        @else
+            <h3 class="text-center alert alert-info">Empty!</h3>
+        @endif
     </div>
 @endsection

@@ -39,10 +39,18 @@
                 <ul class="nav side-menu">
                     <li>
                         <a href="{{ route('admin.users') }}">
-                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <i class="fa fa-user" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_1_1') }}
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('admin.users.studentindex') }}">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            {{ __('views.backend.section.navigation.menu_1_3') }}
+                        </a>
+                    </li>
+
                     <li>
                         <a href="{{ route('admin.colleges.index') }}">
                             <i class="fa fa-institution" aria-hidden="true"></i>
@@ -51,37 +59,37 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.groups.index') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
+                            <i class="fa fa-users" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_6') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.categories.index') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
+                            <i class="fa fa-gear" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_1') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.sub_categories.index') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
+                            <i class="fa fa-gears" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_2') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.tests.index') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
+                            <i class="fa fa-edit" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_3') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.questions.index') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_4') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.assigns.index') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
+                            <i class="fa fa-random" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_5') }}
                         </a>
                     </li>
