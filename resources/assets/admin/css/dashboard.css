@@ -30,3 +30,35 @@
     background-color: #90CAF9;
 }
 
+.page-header{
+    border-bottom: 2px solid #000 !important;
+}
+
+.margin-top-10{
+    margin-top: 10px !important;
+}
+
+.margin-top-20{
+    margin-top: 20px !important;
+}
+
+.margin-top-30{
+    margin-top: 30px !important;
+}
+
+.margin-top-40{
+    margin-top: 40px !important;
+}
+
+.margin-top-50{
+    margin-top: 50px !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.article-date-width{
+    width:75px !important;
+}
+

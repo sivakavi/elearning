@@ -4,12 +4,14 @@
 
 @section('content')
     <div class="page-header clearfix">
+    </div>
+    <div>
         <h1>
             <a class="btn btn-success pull-right" href="{{ route('admin.users.create') }}?role=student"><i class="glyphicon glyphicon-plus"></i> Create Student</a>
             <a class="btn btn-success pull-right" href="{{ route('admin.users.create') }}?role=staff"><i class="glyphicon glyphicon-plus"></i> Create Staff</a>
         </h1>
-
     </div>
+    
     <div class="row">
         <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
                width="100%">

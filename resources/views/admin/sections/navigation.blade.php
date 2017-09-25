@@ -45,7 +45,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.colleges.index') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
+                            <i class="fa fa-institution" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_1_2') }}
                         </a>
                     </li>
