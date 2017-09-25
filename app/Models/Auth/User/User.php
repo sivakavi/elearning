@@ -94,4 +94,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Contact');
     }
+
+    public function group()
+    {
+        return $this->belongsTo('App\Group');
+    }
+
+    public function college()
+    {
+        return $this->belongsTo('App\College');
+    }
 }

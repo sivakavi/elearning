@@ -1,7 +1,23 @@
 @extends('admin.layouts.admin')
 @section('content')
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! \Session::get('success') !!}</li>
+            </ul>
+        </div>
+    @endif
     <div class="page-header">
         <h1>Questions / Create </h1>
+        <a href="{{ asset('excel/questions.xlsx') }}">Sample Question Excel</a>
+        <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ route('admin.question.importExcel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="file" name="import_file" />
+            @if($errors->has("import_file"))
+                <span class="help-block">{{ $errors->first("import_file") }}</span>
+            @endif
+            <button class="btn btn-primary">Import File</button>
+        </form>
     </div>
     @include('error')
 

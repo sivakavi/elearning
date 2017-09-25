@@ -1,6 +1,13 @@
 @extends('admin.layouts.admin')
 
 @section('content')
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! \Session::get('success') !!}</li>
+            </ul>
+        </div>
+    @endif
     <div class="page-header">
         <h1>Users / Create </h1>
         @if(app('request')->input('role')=="student")

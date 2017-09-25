@@ -7,6 +7,7 @@ use App\Category;
 use App\SubCategory;
 use App\Test;
 use App\Question;
+use Validator;
 use App\Http\Requests\StoreQuestion;
 use Illuminate\Http\Request;
 
@@ -129,5 +130,41 @@ class QuestionController extends BaseControllers {
 		}
 		return response()->json($data);
 	}
+
+	public function importExcel(Request $request)
+	{
+        $validator = Validator::make($request->all(), [
+            'import_file' => 'required|mimes:xlsx'
+        ]);
+        
+        if ($validator->fails()) return redirect()->back()->withErrors($validator->errors());
+		if ($request->hasFile('import_file')) {
+			$path = $request->file('import_file')->getRealPath();
+			$rows = \Excel::load($path, function($reader) {
+            })->toArray();
+			foreach($rows as $row){
+                if(!is_null($row['question'])){
+                    \DB::transaction(function() use ($row) {
+						
+						$questionDetails = new Question();
+                        $questionDetails->category_id 	= $row['categoryid'];
+						$questionDetails->sub_category_id = $row['subcategoryid'];
+						$questionDetails->test_id 	= $row['testid'];
+						$questionDetails->question 	= $row['question'];
+						
+						$questionDetails->answer1 	= $row['answer1'];
+						$questionDetails->answer2 	= $row['answer2'];
+						$questionDetails->answer3 	= $row['answer3'];
+						$questionDetails->answer4 	= $row['answer4'];
+						$questionDetails->correct_answer = $row['correctanswer'];
+						$questionDetails->description = $row['description'];
+                        $questionDetails->save();
+                    });
+                }
+
+            }
+		}
+		return back()->with('success', 'Question Imported Sussesfully');
+    }
 
 }
