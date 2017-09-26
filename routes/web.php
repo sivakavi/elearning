@@ -92,6 +92,6 @@ Route::get('/', 'HomeController@index');
 Route::group(['prefix' => 'student', 'as' => 'student.', 'namespace' => 'Student'], function () {
 
     // Dashboard
-Route::get('/', 'DashboardsController@index')->name('dashboards');
+Route::get('/', 'DashboardsController@index')->name('studentdashboard');
     
 });

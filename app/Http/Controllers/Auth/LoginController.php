@@ -110,6 +110,15 @@ class LoginController extends Controller
                 ->withErrors($errors);
         }
 
+        if($user->hasRole('administrator')){
+            return redirect('admin');
+        }
+        else if($user->hasRole('student')){
+            return redirect('student');
+        }
+        else if($user->hasRole('staff')){
+            return redirect('staff');
+        }
         return redirect()->intended($this->redirectPath());
     }
 }
