@@ -1,4 +1,4 @@
-@extends('student.layouts.admin')
+@extends('student.layouts.student')
 
 @section('title', __('views.admin.dashboard.title'))
 
