@@ -118,7 +118,7 @@ class QuestionController extends BaseControllers {
 		$question = Question::findOrFail($id);
 		$question->delete();
 
-		return redirect()->route('admin.questions.index')->with('message', 'Item deleted successfully.');
+		return back()->with('success', 'Item deleted successfully.');
 	}
 
 	public function getSubCategory(Request $request)
