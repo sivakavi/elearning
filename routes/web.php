@@ -74,6 +74,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::post('userImport', 'UserController@importExcel')->name('users.importExcel');
     
+    Route::post('questionImport', 'QuestionController@importExcel')->name('question.importExcel');
+    
 });
 
 

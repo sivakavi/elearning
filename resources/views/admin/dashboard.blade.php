@@ -9,7 +9,7 @@
                 <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
-                    <div class="count">179</div>
+                    <div class="count">{{ $college }}</div>
                     <h3>Colleges</h3>
                     <p>No. of Colleges.</p>
                     </div>
@@ -17,7 +17,7 @@
                 <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
-                    <div class="count">179</div>
+                    <div class="count">{{ $category }}</div>
                     <h3>Categories</h3>
                     <p>No. of Categories.</p>
                     </div>
@@ -35,28 +35,23 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <article class="media event">
-                      <a class="pull-left date article-date-width">
-                        <p class="month">April</p>
-                        <p class="day">23</p>
-                        <p class="month">2017</p>
-                      </a>
-                      <div class="media-body">
-                        <a class="title" href="#">Item One Title</a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                      </div>
-                    </article>
-                    <article class="media event">
-                      <a class="pull-left date article-date-width">
-                        <p class="month">April</p>
-                        <p class="day">23</p>
-                        <p class="month">2017</p>
-                      </a>
-                      <div class="media-body">
-                        <a class="title" href="#">Item Two Title</a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                      </div>
-                    </article>
+                    @if(count($groups))
+                      @foreach($groups as $group)
+                        <article class="media event">
+                          <a class="pull-left date article-date-width">
+                            <p class="month">{{ date('M', strtotime($group->expiry)) }}</p>
+                            <p class="day">{{ date('d', strtotime($group->expiry)) }}</p>
+                            <p class="month">{{ date('Y', strtotime($group->expiry)) }}</p>
+                          </a>
+                          <div class="media-body">
+                            <a class="title" href="{{ route('admin.colleges.show', $group->college()->first()->id) }}">{{$group->college()->first()->name}}</a><br>
+                            <a class="title" href="{{ route('admin.groups.show', $group->id) }}">{{$group->name}}</a>
+                          </div>
+                        </article>
+                      @endforeach
+                    @else
+                     <p>No expiry found</p>
+                    @endif
                   </div>
                 </div>
             </div>

@@ -43,7 +43,7 @@
 
                                     <div class="form-group @if($errors->has('phno')) has-error @endif">
                                     <label for="phno-field">Phno</label>
-                                    <input type="text" id="phno-field" name="phno" class="form-control" value="{{ old("phno") }}"/>
+                                    <input type="number" id="phno-field" name="phno" maxlength="10" class="form-control" value="{{ old("phno") }}"/>
                                     @if($errors->has("phno"))
                                         <span class="help-block">{{ $errors->first("phno") }}</span>
                                     @endif
@@ -59,7 +59,7 @@
 
                                     <div class="form-group @if($errors->has('contact_person_phno')) has-error @endif">
                                     <label for="contact_person_phno-field">Contact_person_phno</label>
-                                    <input type="text" id="contact_person_phno-field" name="contact_person_phno" class="form-control" value="{{ old("contact_person_phno") }}"/>
+                                    <input type="number" id="contact_person_phno-field" maxlength="10" name="contact_person_phno" class="form-control" value="{{ old("contact_person_phno") }}"/>
                                     @if($errors->has("contact_person_phno"))
                                         <span class="help-block">{{ $errors->first("contact_person_phno") }}</span>
                                     @endif

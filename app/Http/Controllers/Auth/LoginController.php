@@ -98,6 +98,9 @@ class LoginController extends Controller
         if (!$user->active) {
             $errors = [$this->username() => __('auth.active')];
         }
+        if(!is_null($user->group()->first()) && strtotime($user->group()->first()->expiry) < strtotime("now")){
+            $errors = [$this->username() => __('auth.active')];
+        }
 
         if ($errors) {
             auth()->logout();  //logout

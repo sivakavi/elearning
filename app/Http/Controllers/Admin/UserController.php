@@ -35,7 +35,7 @@ class UserController extends BaseControllers
         $college_id = $request->input('college_id');
         $group_id = $request->input('group_id');
         $users = User::whereHas('roles', function ($query) {
-            $query->where('name', 'student');})->where('college_id', $college_id)->where('group_id', $group_id)->paginate(1);
+            $query->where('name', 'student');})->where('college_id', $college_id)->where('group_id', $group_id)->paginate();
         return view('admin.users.studentList', ['users' => $users]);
     }
 
@@ -76,7 +76,9 @@ class UserController extends BaseControllers
                 $user->roles()->attach($role);
                 $user->save();
             });
-
+        if($request->input('role') == 'student'){
+            return redirect()->intended(route('admin.users.studentindex'));
+        }
         return redirect()->intended(route('admin.users'));
     }
 
@@ -206,7 +208,7 @@ class UserController extends BaseControllers
 
             }
 		}
-		return back();
+		return back()->with('success', 'Users Imported Sussesfully');
     }
     
     private function deleteGroupUser($group_id)

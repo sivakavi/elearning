@@ -9,6 +9,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
+use App\College;
+use App\Category;
+use App\Group;
 
 class DashboardController extends Controller
 {
@@ -29,6 +32,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $college = College::all()->count();
+        $category = Category::all()->count();
+        $groups = Group::whereDate('expiry', '<=', Carbon::now()->addMonths(1))->get();
+        return view('admin.dashboard',compact('college','category','groups'));
     }
 }

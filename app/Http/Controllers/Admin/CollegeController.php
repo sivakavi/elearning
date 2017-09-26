@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\College;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCollege;
 
 class CollegeController extends Controller {
 
@@ -36,7 +36,7 @@ class CollegeController extends Controller {
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(StoreCollege $request)
 	{
 		$college = new College();
 
@@ -85,7 +85,7 @@ class CollegeController extends Controller {
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function update(Request $request, $id)
+	public function update(StoreCollege $request, $id)
 	{
 		$college = College::findOrFail($id);
 
