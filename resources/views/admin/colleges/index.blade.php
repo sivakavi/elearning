@@ -1,16 +1,16 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('views.admin.users.index.title'))
+@section('title', 'College List')
 
 @section('content')
     <div class="page-header clearfix">
-        <h1>
-            Colleges
-            <a class="btn btn-success pull-right" href="{{ route('admin.colleges.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
-        </h1>
-
     </div>
-    <div class="row">
+    <h1>
+        <a class="btn btn-success pull-right" href="{{ route('admin.colleges.create') }}">
+            <i class="glyphicon glyphicon-plus"></i> Create
+        </a>
+    </h1>
+    <div class="row" style="margin-top:80px;">
         <div class="col-md-12">
             @if($colleges->count())
                 <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"

@@ -1,17 +1,20 @@
 @extends('admin.layouts.admin')
 
+@section('title', 'Group List')
+
 @section('content')
     <div class="page-header clearfix">
-        <h1>
-             GROUPS
-            <a class="btn btn-success pull-right" href="{{ route('admin.groups.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
-        </h1>
-
     </div>
-    <div class="row">
+    <h1>
+        <a class="btn btn-success pull-right" href="{{ route('admin.groups.create') }}">
+            <i class="glyphicon glyphicon-plus"></i> Create
+        </a>
+    </h1>
+    <div class="row" style="margin-top:80px;">
         <div class="col-md-12">
             @if($groups->count())
-                <table class="table table-condensed table-striped">
+                <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+               width="100%">
                     <thead>
                         <tr>
                             <th>ID</th>
