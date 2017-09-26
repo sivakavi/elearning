@@ -87,6 +87,10 @@
                         @else
                             @if(auth()->user()->hasRole('administrator'))
                                 <a href="{{ url('/admin') }}">{{ __('views.welcome.admin') }}</a>
+                            @elseif(auth()->user()->hasRole('staff'))
+                                <a href="{{ url('/staff') }}">{{ __('views.welcome.admin') }}</a>
+                            @elseif(auth()->user()->hasRole('student'))
+                                <a href="{{ url('/student') }}">{{ __('views.welcome.admin') }}</a>
                             @endif
                             <a href="{{ url('/logout') }}">{{ __('views.welcome.logout') }}</a>
                         @endif
