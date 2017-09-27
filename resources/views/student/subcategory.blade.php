@@ -10,7 +10,7 @@
             <div class="tile-stats">
             <div class="icon"><i class="fa fa-institution"></i></div>
             <h3>{{ $subCategory['name'] }}</h3>
-            <p><a href="{{ asset('uploads/'.$subCategory['file']) }}" download> {{ $subCategory['file'] }}</a></p>
+            <p><a href="{{ route('student.view.pdf', $subCategory['id']) }}"> View PDF</a></p>
             @foreach($test as $testId => $testName)
                 <p> {{ $testName }}</p>
             @endforeach

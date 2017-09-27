@@ -11,6 +11,7 @@ use App\Group;
 use App\Category;
 use Auth;
 use App\Question;
+use App\ViewReport;
 
 class DashboardController extends Controller
 {
@@ -38,11 +39,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $sub_categories = $this->user->group->sub_categories()->get();
-        foreach ($sub_categories as $sub_category) {
-            $categories[$sub_category->category_id] = $sub_category->parent_name;
+        $subCategories = $this->user->group->sub_categories()->get();
+        $totalCount = count($subCategories);
+        $viewCount = ViewReport::where("user_id", $this->user->id)->count();
+        $categories = $subCategoriesName = array();
+        foreach ($subCategories as $subCategory) {
+            $categories[$subCategory->category_id] = $subCategory->parent_name;
+            $subCategoriesName[]=$subCategory->name;
         }
-        return view('student.dashboard', compact('categories'));
+        return view('student.dashboard', compact('categories', 'subCategoriesName', 'totalCount', 'viewCount'));
     }
 
     public function category($id)
@@ -70,6 +75,15 @@ class DashboardController extends Controller
             return view('student.subcategory', compact('subCategory', 'test'));
         }
         abort(404, 'Yor are not authorized to page access');
+    }
+
+    public function subCategoryPDF($id)
+    {
+        $subCategory = $this->user->group->sub_categories()->where('id',$id)->first();
+        if(!is_null($subCategory)){
+            ViewReport::updateOrCreate(['user_id' => $this->user->id, 'sub_category_id' => $id]);
+            return redirect("uploads/".$subCategory->file);
+        }
     }
 
     private function getSubCategory($category= null)
