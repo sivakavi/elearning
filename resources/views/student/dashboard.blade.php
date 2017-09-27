@@ -55,40 +55,7 @@
                 <div class="x_content">
 
                     <div class="row">
-                        <div class="col-md-8 col-sm-12 col-xs-12 center-margin">
-                            <div class="widget_summary">
-                                <div class="w_left w_25">
-                                <span>Category 1</span>
-                                </div>
-                                <div class="w_center w_55">
-                                <div class="progress">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                                        60%
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="w_right w_20">
-                                <span class="font-size-15">60%</span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-
-                            <div class="widget_summary">
-                                <div class="w_left w_25">
-                                <span>Category 2</span>
-                                </div>
-                                <div class="w_center w_55">
-                                <div class="progress">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                                        70%
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="w_right w_20">
-                                <span class="font-size-15">60%</span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                        <div class="col-md-8 col-sm-12 col-xs-12 center-margin margin-top-30">
 
                             <div class="widget_summary">
                                 <div class="w_left w_25">
@@ -96,7 +63,7 @@
                                 </div>
                                 <div class="w_center w_55">
                                 <div class="progress">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                                    <div class="progress-bar bg-green" role="progressbar"  style="width: 25%;">
                                         60%
                                     </div>
                                 </div>
@@ -106,6 +73,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
+
                         </div>
                     </div>
                   
