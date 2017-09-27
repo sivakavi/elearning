@@ -6,17 +6,17 @@
     <div class="page-header clearfix"></div>
     <div class="margin-top-30">
         <div class="row top_tiles">
-        @if(count($categories))
-            @foreach($categories as $category => $categoryName)
+        @if(count($subCategories))
+            @foreach($subCategories as $subCategory => $subCategoryName)
                 <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
-                    <h3><a href="{{ route('student.category', $category) }}"> {{ $categoryName }}</a></h3>
+                    <h3><a href="{{ route('student.sub.category', $subCategory) }}"> {{ $subCategoryName }}</a></h3>
                     </div>
                 </div>
             @endforeach
         @else
-            <p>No Category found</p>
+            <p>No Sub Category found</p>
         @endif
         </div>
     </div>
