@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Models\Auth\Role\Role;
 use Illuminate\Support\Facades\Auth;
 
 class Student
@@ -20,11 +19,10 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        $role = Role::where('name', 'student');
-        if (Auth::user() &&  Auth::user()->hasRole($role)) {
+        if (Auth::user() &&  Auth::user()->hasRole('student')) {
             return $next($request);
         }
 
-        return redirect('/');
+        abort(404, 'Yor are not authorized to page access'); 
     }
 }
