@@ -95,4 +95,6 @@ Route::group(['prefix' => 'student', 'as' => 'student.', 'namespace' => 'Student
     Route::get('/subCategories', 'DashboardController@subCategories')->name('sub.categories');
 
     Route::get('/subCategory/{id}', 'DashboardController@subCategory')->name('sub.category');
+
+    Route::get('/subCategory/pdf/{id}', 'DashboardController@subCategoryPDF')->name('view.pdf');
 });

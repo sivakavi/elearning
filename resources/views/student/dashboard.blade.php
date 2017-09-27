@@ -11,33 +11,33 @@
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
-                    <div class="count">100</div>
-                    <h3>Lessions</h3>
-                    <p>No. of Lessions.</p>
+                    <div class="count">{{ $totalCount }}</div>
+                    <h3>Lessons</h3>
+                    <p>No. of Lessons.</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
-                    <div class="count">80</div>
-                    <h3>Viewed Lessions</h3>
-                    <p>No. of Viewed Lessions.</p>
+                    <div class="count">{{ $viewCount }}</div>
+                    <h3>Viewed Lessons</h3>
+                    <p>No. of Viewed Lessons.</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
-                    <div class="count">100</div>
-                    <h3>Lessions</h3>
-                    <p>No. of Lessions.</p>
+                    <div class="count">{{ $totalCount }}</div>
+                    <h3>Lessons</h3>
+                    <p>No. of Lessons.</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
-                    <div class="count">80</div>
-                    <h3>Viewed Lessions</h3>
-                    <p>No. of Viewed Lessions.</p>
+                    <div class="count">{{ $viewCount }}</div>
+                    <h3>Viewed Lessons</h3>
+                    <p>No. of Viewed Lessons.</p>
                     </div>
                 </div>
     </div>  
@@ -47,7 +47,7 @@
     <div class="col-sm-12">
               <div class="x_panel tile">
                 <div class="x_title">
-                  <h2>Lessions Status</h2>
+                  <h2>Lessons Status</h2>
                   <ul class="nav navbar-right">
                   <li class="cursor-pointer"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -58,23 +58,24 @@
 
                     <div class="row">
                         <div class="col-md-8 col-sm-12 col-xs-12 center-margin margin-top-30">
-
-                            <div class="widget_summary">
-                                <div class="w_left w_25">
-                                <span>Category 3</span>
-                                </div>
-                                <div class="w_center w_55">
-                                <div class="progress">
-                                    <div class="progress-bar bg-green" role="progressbar"  style="width: 25%;">
-                                        60%
+                            @foreach($subCategoriesName as $subCategoryName)
+                                <div class="widget_summary">
+                                    <div class="w_left w_25">
+                                    <span>{{ $subCategoryName }}</span>
                                     </div>
+                                    <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-green" role="progressbar"  style="width: 25%;">
+                                            60%
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="w_right w_20">
+                                    <span class="font-size-15">60%</span>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                </div>
-                                <div class="w_right w_20">
-                                <span class="font-size-15">60%</span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                            @endforeach
 
                         </div>
                     </div>
