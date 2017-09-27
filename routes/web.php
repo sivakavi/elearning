@@ -90,7 +90,7 @@ Route::get('/', 'HomeController@index');
 
 
 Route::group(['prefix' => 'student', 'as' => 'student.', 'namespace' => 'Student', 'middleware' => 'student'], function () {
-    Route::get('/', 'DashboardController@index')->name('studentdashboard');
+    Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::get('/category/{id}', 'DashboardController@category')->name('category');
     Route::get('/subCategories', 'DashboardController@subCategories')->name('sub.categories');
 

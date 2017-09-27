@@ -26,13 +26,13 @@
            
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{ route('admin.dashboard') }}">
+                        <a href="{{ route('student.dashboard') }}">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_0_1') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.categories.index') }}">
+                        <a href="{{ route('student.sub.categories') }}">
                             <i class="fa fa-gear" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_1') }}
                         </a>
