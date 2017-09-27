@@ -6,18 +6,16 @@
     <div class="page-header clearfix"></div>
     <div class="margin-top-30">
         <div class="row top_tiles">
-        @if(count($subCategories))
-            @foreach($subCategories as $subCategory => $subCategoryName)
-                <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-institution"></i></div>
-                    <h3><a href="{{ route('student.sub.category', $subCategory) }}"> {{ $subCategoryName }}</a></h3>
-                    </div>
-                </div>
+        <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+            <div class="icon"><i class="fa fa-institution"></i></div>
+            <h3>{{ $subCategory['name'] }}</h3>
+            <p><a href="{{ asset('uploads/'.$subCategory['file']) }}" download> {{ $subCategory['file'] }}</a></p>
+            @foreach($test as $testId => $testName)
+                <p> {{ $testName }}</p>
             @endforeach
-        @else
-            <p>No Sub Category found</p>
-        @endif
+            </div>
+        </div>
         </div>
     </div>
 

@@ -10,6 +10,7 @@ use Illuminate\Routing\Route;
 use App\Group;
 use App\Category;
 use Auth;
+use App\Question;
 
 class DashboardController extends Controller
 {
@@ -61,7 +62,12 @@ class DashboardController extends Controller
         $subCategory = $this->user->group->sub_categories()->where('id',$id)->first();
         if(!is_null($subCategory)){
             $subCategory = $subCategory->toArray();
-            return view('student.subcategorylist', compact('subCategory'));
+            $tests = Question::select('test_id', 'sub_category_id')->where('sub_category_id', $id)->get()->toArray();
+            $test = array();
+            foreach($tests as $testValue){
+                $test[$testValue['test_id']] = $testValue['parent_name'];
+            }
+            return view('student.subcategory', compact('subCategory', 'test'));
         }
         abort(404, 'Yor are not authorized to page access');
     }

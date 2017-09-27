@@ -24,4 +24,9 @@ class SubCategory extends Model
         $parent = $this->category()->first();
         return $parent->name;
     }
+
+    public function questions()
+    {
+        return $this->hasMany('App\Question');
+    }
 }
