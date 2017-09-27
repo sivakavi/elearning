@@ -10,7 +10,7 @@ use Illuminate\Routing\Route;
 use App\Group;
 use Auth;
 
-class DashboardsController extends Controller
+class DashboardController extends Controller
 {
 
     private $user;
