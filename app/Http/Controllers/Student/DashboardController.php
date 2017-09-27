@@ -92,7 +92,9 @@ class DashboardController extends Controller
     {
         $subCategory = array();
         foreach ($subCategories as $key => $value) {
-            $subCategory[$value['id']] = $value['name'];
+            $subCategory[$value['id']]['id'] = $value['id'];
+            $subCategory[$value['id']]['name'] = $value['name'];
+            $subCategory[$value['id']]['category_name'] = $value['parent_name'];
         }
         return $subCategory;
     }
