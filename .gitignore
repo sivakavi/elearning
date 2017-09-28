@@ -25,6 +25,8 @@ public/assets
 public/uploads
 public/mix-manifest.json
 
+env
+htaccess
 .env
 .env.*.php
 .env.php
