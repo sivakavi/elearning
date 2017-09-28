@@ -9,13 +9,13 @@
 
     @if(count($subCategories))
         @foreach($subCategories as $key => $subCategory)
-        <div class="col-md-4 col-xs-12 widget widget_tally_box max-width-none">
+        <div class="col-md-3 col-xs-12 widget widget_tally_box max-width-none">
             <div class="x_panel ui-ribbon-container">
-                <div class="ui-ribbon-wrapper">
+                <!-- <div class="ui-ribbon-wrapper">
                     <div class="ui-ribbon">
                     30% Off
                     </div>
-                </div>
+                </div> -->
                 <div class="x_title">
                     <h2 class="white-space">{{ $subCategory['name'] }}</h2>
                     <div class="clearfix"></div>
