@@ -86,6 +86,13 @@ class DashboardController extends Controller
         }
     }
 
+    public function test(Request $request, $id)
+    {
+        
+        $questions = Question::where('test_id', $id)->where('sub_category_id', $request->input('subCatId'))->get()->toArray();
+        return view('student.test', compact('questions'));
+    }
+
     private function getSubCategory($category= null)
     {
         $subCategories =array();
