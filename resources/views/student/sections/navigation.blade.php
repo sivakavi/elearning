@@ -34,7 +34,7 @@
                     </li>
                     <li>
                         <a href="{{ route('student.sub.categories') }}">
-                            <i class="fa fa-gear" aria-hidden="true"></i>
+                            <i class="fa fa-book" aria-hidden="true"></i>
                             {{ __('views.backend.section.navigation.menu_2_1') }}
                         </a>
                     </li>
