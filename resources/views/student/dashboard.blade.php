@@ -3,43 +3,60 @@
 @section('title', __('views.admin.dashboard.title'))
 
 @section('content')
+
+<style>
+.tile-stats
+{
+    border: 1px solid #2a3f54;
+}
+#box1
+{
+    border: 1px solid #2a3f54;
+
+}
+
+
+</style>
+
     <div class="page-header clearfix"></div>
 
     
 
     <div class="row top_tiles margin-top-40">
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12" >
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
                     <div class="count">{{ $totalCount }}</div>
-                    <h3>Lessons</h3>
-                    <p>No. of Lessons.</p>
+                    <h3>Category</h3>
+                    <p>Total Category</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
                     <div class="count">{{ $viewCount }}</div>
-                    <h3>Viewed Lessons</h3>
-                    <p>No. of Viewed Lessons.</p>
+                    <h3>Completed</h3>
+                    <p>No. of Completed Lessons.</p>
+                    </div>
+                </div>
+               
+                          <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                    <div class="icon"><i class="fa fa-cubes"></i></div>
+                    <div class="count">{{ $viewCount }}</div>
+                    <h3>Pending</h3>
+                    <p>No. of Pending Lessons.</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
                     <div class="count">{{ $totalCount }}</div>
-                    <h3>Lessons</h3>
-                    <p>No. of Lessons.</p>
+                    <h3>Hours Spent</h3>
+                    <p>No. of Hours Spent</p>
                     </div>
                 </div>
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-cubes"></i></div>
-                    <div class="count">{{ $viewCount }}</div>
-                    <h3>Viewed Lessons</h3>
-                    <p>No. of Viewed Lessons.</p>
-                    </div>
-                </div>
+     
     </div>  
 
     <div class="row margin-top-50">
@@ -71,7 +88,7 @@
                                     </div>
                                     </div>
                                     <div class="w_right w_20">
-                                    <span class="font-size-15">60%</span>
+                                    <span class="font-size-15">30%</span>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -101,7 +118,7 @@
                    <div class="row margin-top-20">
                         @if(count($categories))
                                 @foreach($categories as $category => $categoryName)
-                                <div class="col-md-4 col-xs-12 widget widget_tally_box">
+                                <div class="col-md-3 col-xs-12 widget widget_tally_box" >
                                     <a href="{{ route('student.category', $category) }}"><div class="x_panel student-category">
                                     <div class="x_content">
                                         <h4 class="name"> {{ $categoryName }} </h4>
