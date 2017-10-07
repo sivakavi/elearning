@@ -10,4 +10,9 @@ class College extends Model
     {
         return $this->hasMany('App\Group');
     }
+
+    public function users()
+    {
+        return $this->hasMany('App\Models\Auth\User\User');
+    }
 }

@@ -26,6 +26,8 @@ class LoginListener
      */
     public function handle(Login $event)
     {
-        //
+        $event->user->past_last_login = $event->user->last_login;        
+        $event->user->last_login = date('Y-m-d H:i:s');
+        $event->user->save();
     }
 }
