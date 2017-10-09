@@ -41,13 +41,14 @@ class DashboardController extends Controller
     {
         $subCategories = $this->user->group->sub_categories()->get();
         $totalCount = count($subCategories);
+        $student = $this->user;
         $viewCount = ViewReport::where("user_id", $this->user->id)->count();
         $categories = $subCategoriesName = array();
         foreach ($subCategories as $subCategory) {
             $categories[$subCategory->category_id] = $subCategory->parent_name;
             $subCategoriesName[]=$subCategory->name;
         }
-        return view('student.dashboard', compact('categories', 'subCategoriesName', 'totalCount', 'viewCount'));
+        return view('student.dashboard', compact('categories', 'subCategoriesName', 'totalCount', 'viewCount', 'student'));
     }
 
     public function category($id)

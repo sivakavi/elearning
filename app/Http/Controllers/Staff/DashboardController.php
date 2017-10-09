@@ -43,16 +43,38 @@ class DashboardController extends Controller
             $query->where('name', 'student');})->where('college_id', $this->college->id)->count();
         $activeUserCount = User::whereHas('roles', function ($query) {
                 $query->where('name', 'student');})->where('college_id', $this->college->id)->whereNotNull('last_login')->count();
-        return view('staff.dashboard', compact('userCount','groupCount', 'activeUserCount'));
+        $college_id = $this->college->id;
+        $groups = Group::all(['id', 'name', 'college_id'])->where('college_id',$college_id);
+        
+        return view('staff.dashboard', compact('userCount','groupCount', 'activeUserCount', 'groups'));
     }
 
     public function studentList(Request $request)
     {
-        $id = $request->input('group_id');
+        $group_id = $request->input('group_id');
         $students = User::whereHas('roles', function ($query) {
             $query->where('name', 'student');})->where('college_id', $this->college->id);
-        $students = $students->paginate();
+        if($group_id){
+            $students->where('group_id', $group_id);
+        }
+        $students = $students->paginate(1);
         return view('staff.list', ['users' => $students]);
+        
+    }
+
+    public function student($id)
+    {
+        
+        $student = User::find($id);
+        $subCategories = $student->group->sub_categories()->get();
+        $totalCount = count($subCategories);
+        $viewCount = ViewReport::where("user_id", $student->id)->count();
+        $categories = $subCategoriesName = array();
+        foreach ($subCategories as $subCategory) {
+            $categories[$subCategory->category_id] = $subCategory->parent_name;
+            $subCategoriesName[]=$subCategory->name;
+        }
+        return view('staff.viewStudent', compact('categories', 'subCategoriesName', 'totalCount', 'viewCount', 'student'));
         
     }
    

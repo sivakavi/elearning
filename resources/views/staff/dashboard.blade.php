@@ -51,7 +51,16 @@
                     <h3>Total number of inactive Users</h3>
                     </div>
                 </div>
-     
+                <div class="form-group">
+                    <label for="group_id">Group</label>
+                    <select id = 
+                    "group_id" class="form-control" name="group_id" required>
+                        <option value="">Select Any Group</option>
+                        @foreach($groups as $group)
+                            <option value="{{$group->id}}">{{$group->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
     </div>  
 
     <div class="row margin-top-50">
@@ -61,6 +70,20 @@
 @section('scripts')
     @parent
     {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
+    <script>
+        $(function(){
+            $('#group_id').change(function(e){
+                e.preventDefault();
+                if($(this).val()){
+                    var url = "{{ route('staff.studentLists')}}";
+                    window.open(
+                    url+"?group_id="+$(this).val(),
+                    '_blank' // <- This is what makes it open in a new window.
+                    );
+                }
+            })
+        })
+    </script>
 @endsection
 
 @section('styles')

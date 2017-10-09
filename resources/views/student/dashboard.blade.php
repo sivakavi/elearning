@@ -51,9 +51,9 @@
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
-                    <div class="count">{{ $totalCount }}</div>
-                    <h3>Hours Spent</h3>
-                    <p>No. of Hours Spent</p>
+                    <div class="count">{{ ($student->past_last_login)?Carbon\Carbon::parse($student->past_last_login)->format('d-m-Y h:i:s'):'Never Connected' }}</div>
+                    <h3>Last Login</h3>
+                    <p>Member's Last Login</p>
                     </div>
                 </div>
      

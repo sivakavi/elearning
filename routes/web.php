@@ -104,4 +104,5 @@ Route::group(['prefix' => 'student', 'as' => 'student.', 'namespace' => 'Student
 Route::group(['prefix' => 'staff', 'as' => 'staff.', 'namespace' => 'Staff', 'middleware' => 'staff'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::get('/student-list', 'DashboardController@studentList')->name('studentLists');
+    Route::get('/student/{id}', 'DashboardController@student')->name('studentShow');
 });
