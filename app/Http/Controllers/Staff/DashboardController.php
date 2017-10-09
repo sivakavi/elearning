@@ -52,10 +52,18 @@ class DashboardController extends Controller
     public function studentList(Request $request)
     {
         $group_id = $request->input('group_id');
+        $active = $request->input('active');
+        $inactive = $request->input('inactive');
         $students = User::whereHas('roles', function ($query) {
             $query->where('name', 'student');})->where('college_id', $this->college->id);
         if($group_id){
             $students->where('group_id', $group_id);
+        }
+        if($inactive){
+            $students->whereNull('last_login');
+        }
+        if($active){
+            $students->whereNotNull('last_login');
         }
         $students = $students->paginate(1);
         return view('staff.list', ['users' => $students]);

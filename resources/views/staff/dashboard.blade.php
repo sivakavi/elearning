@@ -38,18 +38,20 @@
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a target="_blank" href="{{ route('staff.studentLists')}}?active=true">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
                     <div class="count">{{ $activeUserCount }}</div>
                     <h3>Total number of active Users</h3>
-                    </div>
+                    </div></a>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a target="_blank" href="{{ route('staff.studentLists')}}?inactive=true">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
                     <div class="count">{{ $userCount-$activeUserCount }}</div>
                     <h3>Total number of inactive Users</h3>
-                    </div>
+                    </div></a>
                 </div>
                 <div class="form-group">
                     <label for="group_id">Group</label>
