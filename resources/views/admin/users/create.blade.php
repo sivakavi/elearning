@@ -12,12 +12,13 @@
         <h1>Users / Create </h1>
         @if(app('request')->input('role')=="student")
             <a href="{{ asset('excel/user.xlsx') }}">Sample User Excel</a>
-            <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ route('admin.users.importExcel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 30px;" action="{{ route('admin.users.importExcel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="file" name="import_file" />
                 @if($errors->has("import_file"))
                     <span class="help-block">{{ $errors->first("import_file") }}</span>
                 @endif
+                <br/>
                 <button class="btn btn-primary">Import File</button>
             </form>
         @endif
@@ -25,7 +26,7 @@
     @include('error')
     <form class="form-horizontal" method="post" action="{{ route('admin.users.store') }}" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <h4>Contact Information</h4><br>
+        <h3>Contact Information</h3><br>
         <div class="form-group">
             <label class="control-label col-sm-3" for="fname">First Name:</label>
             <div class="col-sm-6">
@@ -81,7 +82,7 @@
             </div>
         </div>
 
-        <br><h4>User Information</h4><br>
+        <br><h3>User Information</h3><br>
 
         <div class="form-group">
             <label class="control-label col-sm-3" for="email">Official Email:</label>
@@ -140,10 +141,11 @@
                 </select>
             </div>
         </div>
-
+        <br/>
+        <br/>
         <div class="form-group"> 
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
+            <div class="col-sm-12">
+                <center><button type="submit" class="btn btn-success">Submit</button></center>
             </div>
         </div>
     </form>

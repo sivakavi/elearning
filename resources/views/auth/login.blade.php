@@ -6,8 +6,18 @@
     <div>
         <div class="login_wrapper">
             <div class="animate form login_form">
+            <div>
+                <div class="h1"><center>{{ config('app.name') }}</center></div>
+            </div>
+
+            <div class="separator">
+                <div class="clearfix"></div>
+            </div>
+
                 <section class="login_content">
                     {{ Form::open(['route' => 'login']) }}
+
+                    
                         <h1>{{ __('views.auth.login.header') }}</h1>
 
                         <div>
@@ -46,7 +56,7 @@
 
                         <div class="clearfix"></div>
 
-                        @if(config('auth.users.registration'))
+                        {{-- @if(config('auth.users.registration'))
                             <div class="separator">
                                 
 
@@ -58,7 +68,7 @@
                                     <p>&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('views.auth.login.copyright') }}</p>
                                 </div>
                             </div>
-                        @endif
+                        @endif --}}
                     {{ Form::close() }}
                 </section>
             </div>

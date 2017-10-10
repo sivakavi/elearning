@@ -3,7 +3,7 @@
 }
 
 .login .h1 {
-    font: 400 25px Helvetica, Arial, sans-serif;
+    font: 400 40px Helvetica, Arial, sans-serif;
     letter-spacing: -.05em;
     line-height: 20px;
     margin: 10px 0 30px;
@@ -62,4 +62,19 @@
     border-color: #1da1f2;
     opacity: 0.9;
     text-decoration: none;
+}
+
+.login_form{
+    padding: 30px 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #d6e6ff;
+}
+
+.login_form .separator{
+    border-top: 1px solid #000 !important;
+}
+
+.login_form input{
+    color:#000 !important;
 }

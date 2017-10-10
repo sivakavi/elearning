@@ -7,7 +7,7 @@
     @include('error')
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12 col-xs-12 col-md-6 center-margin">
 
             <form name="student_list" action="{{ route('admin.users.studentList') }}" method="GET">
                 <div class="form-group">
@@ -27,9 +27,10 @@
                         <option value="">Select any one Group...</option>
                     </select>
                 </div>
-                <div class="well well-sm">
-                    <button type="submit" id="update" class="btn btn-primary">Get List</button>
-                </div>
+                <br/>
+                <center>
+                    <button type="submit" id="update" style="width:200px" class="btn btn-success">Get List</button>
+                </center>
             </form>
 
         </div>
