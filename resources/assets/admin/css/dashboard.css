@@ -1150,3 +1150,12 @@
 .white-space{
     white-space: normal !important;
 }
+
+.profile_info{
+  padding-top: 40px !important;
+}
+
+.tile-stats
+{
+    border: 1px solid #2a3f54;
+}

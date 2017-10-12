@@ -38,6 +38,18 @@
                             {{ __('views.backend.section.navigation.menu_2_1') }}
                         </a>
                     </li>
+                    <li>
+                    <a href="#">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        {{ __('views.backend.section.header.menu_1') }}
+                    </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            {{ __('views.backend.section.header.menu_0') }}
+                        </a>
+                    </li>
                 </ul>
         </div>
         <!-- /sidebar menu -->

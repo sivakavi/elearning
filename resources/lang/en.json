@@ -89,6 +89,7 @@
   "views.backend.section.navigation.menu_2_6": "Groups",
   "**************************** Backend Header *******************": "Backend Header i18n",
   "views.backend.section.header.menu_0": "Log out",
+  "views.backend.section.header.menu_1": "Profile",
   "**************************** Backend Footer *******************": "Backend Footer i18n",
   "views.backend.section.footer.copyright": "All rights reserved",
   "**************************** Welcome *******************": "Welcome i18n",
