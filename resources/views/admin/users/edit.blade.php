@@ -3,6 +3,7 @@
 @section('title',__('views.admin.users.edit.title', ['name' => $user->name]) )
 
 @section('content')
+<div class="page-header"></div>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             {{ Form::open(['route'=>['admin.users.update', $user->id],'method' => 'put','class'=>'form-horizontal form-label-left']) }}

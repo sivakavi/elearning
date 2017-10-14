@@ -1,13 +1,5 @@
 @extends('admin.layouts.admin')
 @section('content')
-    <style>
-        .sortClass {
-            border:1px solid Black;width:250px;height:300px;display:inline-block;vertical-align:top
-        }
-        .sortClass li {background-color:Azure;border-bottom:1px dotted Gray}   
-        .sortClass li.selected {background-color:GoldenRod}
-        .sortClass li { cursor: pointer; cursor: hand; }
-    </style>
     <div class="page-header">
         <h1>Assigns</h1>
     </div>
@@ -35,20 +27,38 @@
                         <option value="">Select any one Group...</option>
                     </select>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <div class="form-group">
-                <label for="group_id">Assign</label><br>
-                <ul id="assignCategories" class="sortClass">
-                </ul>
-                <ul id="subCategories" class="sortClass">
-                    @foreach($subCategories as $subCategory)
-                        <li id="{{ $subCategory->id }}">{{ $subCategory->name }}</li>
-                    @endforeach
-                </ul>
+                    <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                    <label>Selected List</label>
+                    <ul id="assignCategories" class="sortClass"></ul>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                    <label>Sub-Category List</label>
+                        <ul id="subCategories" class="sortClass">
+                            @foreach($subCategories as $subCategory)
+                                <li id="{{ $subCategory->id }}">{{ $subCategory->name }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="col-md-1"></div>
+                    </div>  
                 </div>
-                <div class="well well-sm">
-                    <button type="submit" id="update" class="btn btn-primary">Update</button>
-                </div>
+                <br/>
+                <br/>
+                
+                <center><button type="submit" id="update" class="btn btn-success" style="width:200px;">Update</button></center>
+            
             </form>
+
+            <br/>
+                <br/>
 
         </div>
     </div>

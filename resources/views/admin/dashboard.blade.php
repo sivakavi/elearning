@@ -24,7 +24,7 @@
                 </div>
         </div>
         <div class="row margin-top-30">
-            <div class="col-md-12">
+            <div class="col-md-10 col-sm-12 col-xs-12 center-margin">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Group Expiry Notifications</h2>

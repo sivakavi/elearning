@@ -43,10 +43,13 @@
                 </div>
                 
     </div>  
-
+    <div class="divider"></div>
+    <br/>
+    <br/>
+    <br/>
     <div class="row margin-top-50">
-        <div class="form-group">
-            <label for="group_id">Group</label>
+        <div class="form-group col-md-6 col-sm-12 col-xs-12">
+            <label for="group_id">Filter Student by Group</label>
                 <select id = "group_id" class="form-control" name="group_id" required>
                     <option value="">Select Any Group</option>
                     @foreach($groups as $group)
