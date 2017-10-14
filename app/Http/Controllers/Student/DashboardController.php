@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
 use App\Group;
 use App\Category;
+use App\SubCategoryFile;
 use Auth;
 use App\Question;
 use App\ViewReport;
@@ -40,15 +41,23 @@ class DashboardController extends Controller
     public function index()
     {
         $subCategories = $this->user->group->sub_categories()->get();
-        $totalCount = count($subCategories);
+        $subCategoriesCount = $this->user->group->sub_categories()->count();
+        $totalCount = 0;
+        $viewedCount = 0;
         $student = $this->user;
         $viewCount = ViewReport::where("user_id", $this->user->id)->count();
-        $categories = $subCategoriesName = array();
+        $categories = $subCategoriesGroups = array();
         foreach ($subCategories as $subCategory) {
             $categories[$subCategory->category_id] = $subCategory->parent_name;
-            $subCategoriesName[]=$subCategory->name;
+            $lessons = SubCategoryFile::where('sub_category_id', $subCategory->id)->count();
+            $totalCount += $lessons;
+            $viewed = ViewReport::where('sub_category_id', $subCategory->id)->count();
+            $viewedCount += $viewed;
+            $subCategoriesGroups[$subCategory->id]['name']=$subCategory->name;
+            $subCategoriesGroups[$subCategory->id]['progress']=$lessons? (int)round($viewed/$lessons*100): 0;
         }
-        return view('student.dashboard', compact('categories', 'subCategoriesName', 'totalCount', 'viewCount', 'student'));
+        // dd($subCategoriesGroups);
+        return view('student.dashboard', compact('categories', 'subCategoriesGroups', 'totalCount', 'viewedCount', 'student', 'subCategoriesCount'));
     }
 
     public function category($id)
@@ -67,23 +76,30 @@ class DashboardController extends Controller
     {
         $subCategory = $this->user->group->sub_categories()->where('id',$id)->first();
         if(!is_null($subCategory)){
+            $subCategoryFiles = array();
+            $data = SubCategoryFile::orderBy('id', 'desc')->where('sub_category_id', $id)->get();
+            foreach($data as $subCategoryFile){
+                $str = $subCategoryFile->file;
+                $str = explode('_', $str);
+                $subCategoryFiles[$subCategoryFile->id] = $str[0].'.pdf';
+            }
             $subCategory = $subCategory->toArray();
             $tests = Question::select('test_id', 'sub_category_id')->where('sub_category_id', $id)->get()->toArray();
             $test = array();
             foreach($tests as $testValue){
                 $test[$testValue['test_id']] = $testValue['parent_name'];
             }
-            return view('student.subcategory', compact('subCategory', 'test'));
+            return view('student.subcategory', compact('subCategory', 'test', 'subCategoryFiles'));
         }
         abort(404, 'Yor are not authorized to page access');
     }
 
     public function subCategoryPDF($id)
     {
-        $subCategory = $this->user->group->sub_categories()->where('id',$id)->first();
-        if(!is_null($subCategory)){
-            ViewReport::updateOrCreate(['user_id' => $this->user->id, 'sub_category_id' => $id]);
-            return redirect("uploads/".$subCategory->file);
+        $subCategoryFile = SubCategoryFile::find($id);
+        if(!is_null($subCategoryFile)){
+            ViewReport::updateOrCreate(['user_id' => $this->user->id, 'sub_category_file_id' => $subCategoryFile->id, 'sub_category_id' => $subCategoryFile->sub_category_id]);
+            return redirect("uploads/".$subCategoryFile->file);
         }
     }
 

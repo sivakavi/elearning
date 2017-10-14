@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class ViewReport extends Model
 {
     //
-    protected $fillable = ['user_id','sub_category_id'];
+    protected $fillable = ['user_id','sub_category_file_id', 'sub_category_id'];
 }

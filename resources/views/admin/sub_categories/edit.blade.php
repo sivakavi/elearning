@@ -3,6 +3,7 @@
 @section('content')
     <div class="page-header">
         <h1><i class="glyphicon glyphicon-edit"></i> SubCategories / Edit #{{$sub_category->id}}</h1>
+        <a class="btn btn-success pull-right" href="{{ route('admin.sub_categories_file.index',['sub_category_id' => $sub_category->id]) }}"><i class="glyphicon glyphicon-plus"></i> File Upload</a>
     </div>
     @include('error')
 
@@ -20,14 +21,7 @@
                         <span class="help-block">{{ $errors->first("name") }}</span>
                        @endif
                     </div>
-                    <div class="form-group @if($errors->has('file')) has-error @endif">
-                        <label class="control-label col-sm-3" for="file">File:</label>
-                        <input type="file" class="form-control" name="file" id="file">
-                        @if($errors->has("file"))
-                            <span class="help-block">{{ $errors->first("file") }}</span>
-                        @endif
-                        <a href="{{ asset('uploads/'.$sub_category->file) }}">{{ $sub_category->file }}</a>
-                    </div>
+                    
                     <div class="form-group @if($errors->has('category_id')) has-error @endif">
                        <label for="category_id-field">Category</label>
                         <select class="form-control" name="category_id">

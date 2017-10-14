@@ -29,4 +29,9 @@ class SubCategory extends Model
     {
         return $this->hasMany('App\Question');
     }
+
+    public function subCategoryFile()
+    {
+        return $this->hasMany('App\SubCategoryFile');
+    }
 }

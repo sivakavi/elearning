@@ -10,7 +10,9 @@
             <div class="tile-stats">
             <div class="icon"><i class="fa fa-institution"></i></div>
             <h3>{{ $subCategory['name'] }}</h3>
-            <p><a href="{{ route('student.view.pdf', $subCategory['id']) }}"> View PDF</a></p>
+            @foreach($subCategoryFiles as $subCategoryFileId => $subCategoryFileName)
+                <p><a href="{{ route('student.view.pdf', $subCategoryFileId) }}"> {{ $subCategoryFileName }}</a></p>
+            @endforeach
             @foreach($test as $testId => $testName)
                 <p> <a href="{{ route('student.test', $testId, $subCategory['id']) }}?subCatId={{ $subCategory['id'] }}"> {{ $testName }}</a></p>
             @endforeach

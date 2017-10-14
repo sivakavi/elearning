@@ -75,6 +75,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('userImport', 'UserController@importExcel')->name('users.importExcel');
     
     Route::post('questionImport', 'QuestionController@importExcel')->name('question.importExcel');
+
+    Route::get('sub-category-file', 'SubCategoryFileController@index')->name('sub_categories_file.index');
+
+    Route::get('sub-category-file-create', 'SubCategoryFileController@create')->name('sub_categories_file.create');
+
+    Route::delete('sub-category-file-delete/{id}', 'SubCategoryFileController@destroy')->name('sub_categories_file.destroy');
+
+    Route::post('sub-category-file-store', 'SubCategoryFileController@store')->name('sub_categories_file.store');
     
 });
 

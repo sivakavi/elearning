@@ -16,7 +16,6 @@
                         <tr>
                             <th>ID</th>
                             <th>NAME</th>
-                            <th>FILE</th>
                             <th>CATEGORY</th>
                             <th class="text-right">OPTIONS</th>
                         </tr>
@@ -27,7 +26,6 @@
                             <tr>
                             <td>{{$sub_category->id}}</td>
                             <td>{{$sub_category->name}}</td>
-                            <td>{{$sub_category->file}}</td>
                             <td>{{$sub_category->category()->first()->name}}</td>
                             <td class="text-right">
                                 <a class="btn btn-xs btn-primary" href="{{ route('admin.sub_categories.show', $sub_category->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
