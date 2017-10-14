@@ -40,7 +40,7 @@
                     </div>
                 </div>
                
-                          <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
                     <div class="count">{{ $totalCount - $viewedCount }}</div>
@@ -51,58 +51,15 @@
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
-                    <div class="count">{{ ($student->last_login)?Carbon\Carbon::parse($student->last_login)->format('d-m-Y h:i:s'):'Never Connected' }}</div>
-                    <h3>Last Login</h3>
+                    <div class="count" style="font-size:16px !important; margin-top:5px;">{{ ($student->past_last_login)?Carbon\Carbon::parse($student->past_last_login)->format('d-m-Y h:i:s'):'Never Connected' }}</div>
+                    <h3 class="margin-top-30">Last Login</h3>
                     <p>Member's Last Login</p>
                     </div>
                 </div>
      
     </div>  
 
-    <div class="row margin-top-50">
-
-    <div class="col-sm-12">
-              <div class="x_panel tile">
-                <div class="x_title">
-                  <h2>Lessons Status</h2>
-                  <ul class="nav navbar-right">
-                  <li class="cursor-pointer"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-
-                    <div class="row">
-                        <div class="col-md-8 col-sm-12 col-xs-12 center-margin margin-top-30">
-                            @foreach($subCategoriesGroups as $subCategoriesGroup)
-                                <div class="widget_summary">
-                                    <div class="w_left w_25">
-                                    <span>{{ $subCategoriesGroup['name'] }}</span>
-                                    </div>
-                                    <div class="w_center w_55">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-green" role="progressbar"  style="width: {{ $subCategoriesGroup['progress'] }}%;">
-                                            {{ $subCategoriesGroup['progress'] }}%
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="w_right w_20">
-                                    <span class="font-size-15">{{ $subCategoriesGroup['progress'] }}%</span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            @endforeach
-
-
-                        </div>
-                    </div>
-                  
-                </div>
-              </div>
-            </div>
-
-    </div>
+    
 
     <div class="row margin-top-50">
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -139,6 +96,51 @@
                 </div>
               </div>
     </div>
+
+    <div class="row margin-top-50">
+
+        <div class="col-sm-12">
+                <div class="x_panel tile">
+                    <div class="x_title">
+                    <h2>Lessons Status</h2>
+                    <ul class="nav navbar-right">
+                    <li class="cursor-pointer"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12 col-xs-12 center-margin margin-top-30">
+                                @foreach($subCategoriesGroups as $subCategoriesGroup)
+                                    <div class="widget_summary">
+                                        <div class="w_left w_25">
+                                        <span>{{ $subCategoriesGroup['name'] }}</span>
+                                        </div>
+                                        <div class="w_center w_55">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-green" role="progressbar"  style="width: {{ $subCategoriesGroup['progress'] }}%;">
+                                                {{ $subCategoriesGroup['progress'] }}%
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="w_right w_20">
+                                        <span class="font-size-15">{{ $subCategoriesGroup['progress'] }}%</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                @endforeach
+
+
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+        </div>
+    </div>
+    
     <br/>
     <br/>
     <br/>
