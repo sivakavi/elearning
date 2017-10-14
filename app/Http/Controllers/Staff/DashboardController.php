@@ -65,7 +65,7 @@ class DashboardController extends Controller
         if($active){
             $students->whereNotNull('last_login');
         }
-        $students = $students->paginate(1);
+        $students = $students->paginate();
         return view('staff.list', ['users' => $students]);
         
     }

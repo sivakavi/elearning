@@ -1,5 +1,8 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
+        <div class="logo-div">
+            <img src="{{ asset('faras-logo.jpg') }}" class="logo-img"/>
+        </div>
         <div class="navbar nav_title" style="border: 0;">
             <a href="{{ route('admin.dashboard') }}" class="site_title">
                 <span>{{ config('app.name') }}</span>

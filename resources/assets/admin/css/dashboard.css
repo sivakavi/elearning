@@ -302,7 +302,7 @@
 }
 .c100 {
   position: relative;
-  font-size: 120px;
+  font-size: 80px;
   width: 1em;
   height: 1em;
   border-radius: 50%;
@@ -1158,4 +1158,21 @@
 .tile-stats
 {
     border: 1px solid #2a3f54;
+}
+
+.logo-div{
+  width:100%;
+  height:100px;
+  background:#fff;
+}
+
+.logo-img{
+  height:100px;
+  width:150px;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
