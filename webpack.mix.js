@@ -45,7 +45,7 @@ mix.scripts([
 
 mix.styles([
     'node_modules/font-awesome/css/font-awesome.css',
-    'node_modules/pace-progress/themes/blue/pace-theme-minimal.css',
+    'public/assets/css/pace-theme-minimal.css',
 ], 'public/assets/app/css/app.css').version();
 
 mix.copy([
@@ -79,7 +79,7 @@ mix.styles([
 mix.scripts([
     'node_modules/bootstrap/dist/js/bootstrap.js',
     'node_modules/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js',
-    'node_modules/gentelella/build/js/custom.js',
+    'public/assets/js/custom.js',
 ], 'public/assets/admin/js/admin.js').version();
 
 mix.styles([
