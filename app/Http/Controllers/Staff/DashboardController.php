@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
 use App\Group;
 use App\Category;
+use App\SubCategoryFile;
 use Auth;
 use App\Question;
 use App\ViewReport;
@@ -37,7 +38,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // $college = $this->college;
+        $college = $this->college;
         $groupCount = $this->college->groups->count();
         $userCount = User::whereHas('roles', function ($query) {
             $query->where('name', 'student');})->where('college_id', $this->college->id)->count();
@@ -72,17 +73,24 @@ class DashboardController extends Controller
 
     public function student($id)
     {
-        
         $student = User::find($id);
         $subCategories = $student->group->sub_categories()->get();
-        $totalCount = count($subCategories);
+        $subCategoriesCount = $student->group->sub_categories()->count();
+        $totalCount = 0;
+        $viewedCount = 0;
         $viewCount = ViewReport::where("user_id", $student->id)->count();
-        $categories = $subCategoriesName = array();
+        $categories = $subCategoriesGroups = array();
         foreach ($subCategories as $subCategory) {
             $categories[$subCategory->category_id] = $subCategory->parent_name;
-            $subCategoriesName[]=$subCategory->name;
+            $lessons = SubCategoryFile::where('sub_category_id', $subCategory->id)->count();
+            $totalCount += $lessons;
+            $viewed = ViewReport::where('sub_category_id', $subCategory->id)->count();
+            $viewedCount += $viewed;
+            $subCategoriesGroups[$subCategory->id]['name']=$subCategory->name;
+            $subCategoriesGroups[$subCategory->id]['progress']=$lessons? (int)round($viewed/$lessons*100): 0;
         }
-        return view('staff.viewStudent', compact('categories', 'subCategoriesName', 'totalCount', 'viewCount', 'student'));
+        // dd($subCategoriesGroups);
+        return view('staff.viewStudent', compact('categories', 'subCategoriesGroups', 'totalCount', 'viewedCount', 'student', 'subCategoriesCount'));
         
     }
    
