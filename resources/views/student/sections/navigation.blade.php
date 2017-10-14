@@ -47,6 +47,12 @@
                     </a>
                     </li>
                     <li>
+                        <a href="#">
+                            <i class="fa fa-key" aria-hidden="true"></i>
+                            {{ __('views.backend.section.header.menu_2') }}
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('logout') }}">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                             {{ __('views.backend.section.header.menu_0') }}

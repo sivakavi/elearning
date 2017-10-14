@@ -3,12 +3,14 @@
 @section('content')
     <div class="page-header">
         <h1><i class="glyphicon glyphicon-edit"></i> SubCategories / Edit #{{$sub_category->id}}</h1>
-        <a class="btn btn-success pull-right" href="{{ route('admin.sub_categories_file.index',['sub_category_id' => $sub_category->id]) }}"><i class="glyphicon glyphicon-plus"></i> File Upload</a>
+        
     </div>
     @include('error')
-
+    <br/>
+    <a class="btn btn-success pull-right" href="{{ route('admin.sub_categories_file.index',['sub_category_id' => $sub_category->id]) }}"><i class="glyphicon glyphicon-plus"></i> File Upload</a>
+<br/>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 center-margin">
 
             <form action="{{ route('admin.sub_categories.update', $sub_category->id) }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">

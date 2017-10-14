@@ -6,7 +6,7 @@
     @include('error')
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 center-margin">
 
             <form action="{{ route('admin.sub_categories.store') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

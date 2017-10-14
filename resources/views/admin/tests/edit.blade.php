@@ -9,7 +9,7 @@
     @include('error')
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 center-margin">
 
             <form action="{{ route('admin.tests.update', $test->id) }}" method="POST">
                 <input type="hidden" name="_method" value="PUT">

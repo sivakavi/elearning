@@ -7,7 +7,7 @@
     @include('error')
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 center-margin">
 
             <form name="question-list">
                 
@@ -41,7 +41,7 @@
                 </div>
                 
                 <div class="well well-sm">
-                    <button type="submit" id="getlist" class="btn btn-primary">Get List</button>
+                    <center><button type="submit" id="getlist" class="btn btn-primary">Get List</button></center>
                 </div>
             </form>
 

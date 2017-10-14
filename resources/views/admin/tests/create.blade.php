@@ -8,7 +8,7 @@
     @include('error')
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 center-margin">
 
             <form action="{{ route('admin.tests.store') }}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
