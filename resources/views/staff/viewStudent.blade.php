@@ -27,14 +27,14 @@
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
                     <div class="count">{{ $totalCount }}</div>
-                    <h3>Category</h3>
-                    <p>Total Category</p>
+                    <h3>Lessons</h3>
+                    <p>Total Lessons</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
-                    <div class="count">{{ $viewCount }}</div>
+                    <div class="count">{{ $viewedCount }}</div>
                     <h3>Completed</h3>
                     <p>No. of Completed Lessons.</p>
                     </div>
@@ -43,7 +43,7 @@
                           <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
-                    <div class="count">{{ $viewCount }}</div>
+                    <div class="count">{{ $totalCount - $viewedCount }}</div>
                     <h3>Pending</h3>
                     <p>No. of Pending Lessons.</p>
                     </div>
@@ -75,24 +75,25 @@
 
                     <div class="row">
                         <div class="col-md-8 col-sm-12 col-xs-12 center-margin margin-top-30">
-                            @foreach($subCategoriesName as $subCategoryName)
+                            @foreach($subCategoriesGroups as $subCategoriesGroup)
                                 <div class="widget_summary">
                                     <div class="w_left w_25">
-                                    <span>{{ $subCategoryName }}</span>
+                                    <span>{{ $subCategoriesGroup['name'] }}</span>
                                     </div>
                                     <div class="w_center w_55">
                                     <div class="progress">
-                                        <div class="progress-bar bg-green" role="progressbar"  style="width: 25%;">
-                                            60%
+                                        <div class="progress-bar bg-green" role="progressbar"  style="width: {{ $subCategoriesGroup['progress'] }}%;">
+                                            {{ $subCategoriesGroup['progress'] }}%
                                         </div>
                                     </div>
                                     </div>
                                     <div class="w_right w_20">
-                                    <span class="font-size-15">30%</span>
+                                    <span class="font-size-15">{{ $subCategoriesGroup['progress'] }}%</span>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
                             @endforeach
+
 
                         </div>
                     </div>

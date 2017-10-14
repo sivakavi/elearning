@@ -26,9 +26,9 @@
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12" >
                     <div class="tile-stats">
                     <div class="icon"><i class="fa fa-institution"></i></div>
-                    <div class="count">{{ $subCategoriesCount }}</div>
-                    <h3>Sub Category</h3>
-                    <p>Total Sub Category</p>
+                    <div class="count">{{ $totalCount }}</div>
+                    <h3>Lessons</h3>
+                    <p>Total Lessons</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">

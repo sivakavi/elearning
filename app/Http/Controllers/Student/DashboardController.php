@@ -133,6 +133,10 @@ class DashboardController extends Controller
             $subCategory[$value['id']]['id'] = $value['id'];
             $subCategory[$value['id']]['name'] = $value['name'];
             $subCategory[$value['id']]['category_name'] = $value['parent_name'];
+            $lessons = SubCategoryFile::where('sub_category_id', $value['id'])->count();
+            $viewed = ViewReport::where('sub_category_id', $value['id'])->count();
+            $progress = $lessons? (int)round($viewed/$lessons*100): 0;
+            $subCategory[$value['id']]['progress'] = $progress;
         }
         return $subCategory;
     }
