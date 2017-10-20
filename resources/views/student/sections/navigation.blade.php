@@ -47,7 +47,7 @@
                     </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('users.changePassword') }}">
                             <i class="fa fa-key" aria-hidden="true"></i>
                             {{ __('views.backend.section.header.menu_2') }}
                         </a>

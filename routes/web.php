@@ -89,6 +89,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 Route::get('/', 'HomeController@index');
 
+Route::post('users/change-password', 'UserController@postCredentials')->name('users.change-password');
+
+Route::get('change-password', 'UserController@changePassword')->name('users.changePassword');
+
 
 
 /**
