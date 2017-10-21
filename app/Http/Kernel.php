@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'protection' => \App\Http\Middleware\Protection::class,
         'student' => \App\Http\Middleware\Student::class, // this line right here
         'staff' => \App\Http\Middleware\Staff::class, // this line right here
+        'revalidate' => \App\Http\Middleware\RevalidateBackHistory::class,
     ];
 }

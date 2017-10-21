@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategory;
 
 class CategoryController extends Controller {
 
@@ -36,7 +37,7 @@ class CategoryController extends Controller {
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(StoreCategory $request)
 	{
 		$category = new Category();
 
@@ -80,7 +81,7 @@ class CategoryController extends Controller {
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function update(Request $request, $id)
+	public function update(StoreCategory $request, $id)
 	{
 		$category = Category::findOrFail($id);
 

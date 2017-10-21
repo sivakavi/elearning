@@ -6,10 +6,6 @@
     <div class="row">
         <table class="table table-striped table-hover">
             <tbody>
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_0') }}</th>
-                <td><img src="{{ $user->avatar }}" class="user-profile-image"></td>
-            </tr>
 
             <tr>
                 <th>{{ __('views.admin.users.show.table_header_1') }}</th>
@@ -24,6 +20,14 @@
                     </a>
                 </td>
             </tr>
+
+            <tr>
+                <th>{{ 'College Name' }}</th>
+                <td>
+                    {{ $user->college->name }}
+                </td>
+            </tr>
+
             <tr>
                 <th>{{ __('views.admin.users.show.table_header_3') }}</th>
                 <td>

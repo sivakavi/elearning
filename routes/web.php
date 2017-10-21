@@ -93,6 +93,8 @@ Route::post('users/change-password', 'UserController@postCredentials')->name('us
 
 Route::get('change-password', 'UserController@changePassword')->name('users.changePassword');
 
+Route::get('profile', 'UserController@profile')->name('users.profile');
+
 
 
 /**

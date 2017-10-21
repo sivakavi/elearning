@@ -1,6 +1,6 @@
 @extends('student.layouts.student')
 
-@section('title', 'Lessions List')
+@section('title', 'Lessons List')
 
 @section('content')
     <div class="page-header clearfix"></div>

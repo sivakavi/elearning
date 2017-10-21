@@ -7,7 +7,7 @@
 @endif
 
 
-@section('title', __('views.admin.college.view.title'))
+@section('title', 'Change Password')
 
 @section('content')
 <div class="page-header clearfix"></div>

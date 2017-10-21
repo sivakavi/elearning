@@ -151,6 +151,9 @@ class UserController extends BaseControllers
             }
         }
 
+        if($user->roles->pluck('name')->first() == 'student'){
+            return redirect()->intended(route('admin.users.studentindex'));
+        }
         return redirect()->intended(route('admin.users'));
     }
 

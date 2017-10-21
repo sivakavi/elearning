@@ -4,7 +4,7 @@
             <img src="{{ asset('faras-logo.jpg') }}" class="logo-img"/>
         </div>
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ route('admin.dashboard') }}" class="site_title">
+            <a href="{{ route('staff.dashboard') }}" class="site_title">
                 <!-- <span>{{ config('app.name') }}</span> -->
                 <span>Faras Portal</span>
             </a>
@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('users.profile') }}">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             {{ __('views.backend.section.header.menu_1') }}
                         </a>

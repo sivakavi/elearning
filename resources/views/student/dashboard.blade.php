@@ -58,9 +58,12 @@
                 </div>
      
     </div>  
-
+    @if($lastViewed)
+    <div class="alert alert-info row margin-top-50">{{ 'Last Viewed Lesson "'.$lastViewed->subCategoryFile->file.'" in "'.$lastViewed->subCategory->name.'" category' }}</div>
+    @endif
     <div class="row margin-top-50">
 
+    
     <div class="col-sm-12">
               <div class="x_panel tile">
                 <div class="x_title">

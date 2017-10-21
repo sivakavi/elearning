@@ -79,6 +79,7 @@ class DashboardController extends Controller
         $totalCount = 0;
         $viewedCount = 0;
         $viewCount = ViewReport::where("user_id", $student->id)->count();
+        $lastViewed = ViewReport::where("user_id", $student->id)->orderBy('created_at', 'desc')->first();
         $categories = $subCategoriesGroups = array();
         foreach ($subCategories as $subCategory) {
             $categories[$subCategory->category_id] = $subCategory->parent_name;
@@ -89,8 +90,7 @@ class DashboardController extends Controller
             $subCategoriesGroups[$subCategory->id]['name']=$subCategory->name;
             $subCategoriesGroups[$subCategory->id]['progress']=$lessons? (int)round($viewed/$lessons*100): 0;
         }
-        // dd($subCategoriesGroups);
-        return view('staff.viewStudent', compact('categories', 'subCategoriesGroups', 'totalCount', 'viewedCount', 'student', 'subCategoriesCount'));
+        return view('staff.viewStudent', compact('categories', 'subCategoriesGroups', 'totalCount', 'viewedCount', 'student', 'subCategoriesCount', 'lastViewed'));
         
     }
    

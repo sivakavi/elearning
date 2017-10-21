@@ -86,6 +86,9 @@
         @foreach($questions as $question)
             <div class="row top_tiles">
                 <p class="question"><span>Q {{ $i }}</span> - {{ $question['question']}}?</p>
+                @if($question['image'])
+                    <img src="{{ asset('uploads/'.$question['image']) }}" class="img-responsive"/>
+                @endif
                 <div class="answer">
                     <label class="radio inline"> 
                         <input type="radio" name="{{ $question['id'] }}" value="1" required>

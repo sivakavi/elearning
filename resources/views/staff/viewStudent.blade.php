@@ -1,6 +1,6 @@
 @extends('staff.layouts.staff')
 
-@section('title', __('views.admin.dashboard.title'))
+@section('title', $student->name.' Dashboard')
 
 @section('content')
 
@@ -59,7 +59,9 @@
      
     </div>  
 
-    
+    @if($lastViewed)
+        <div class="alert alert-info row margin-top-50">{{ 'Last Viewed Lesson "'.$lastViewed->subCategoryFile->file.'" in "'.$lastViewed->subCategory->name.'" category' }}</div>
+    @endif
 
     <div class="row margin-top-50">
               <div class="col-md-12 col-sm-12 col-xs-12">
