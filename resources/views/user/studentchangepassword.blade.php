@@ -1,16 +1,12 @@
-@if (Auth::user() &&  Auth::user()->hasRole('adminisrator'))
-    @extends('admin.layouts.admin')
-@elseif(Auth::user() &&  Auth::user()->hasRole('staff'))
-    @extends('staff.layouts.staff')
-@elseif(Auth::user() &&  Auth::user()->hasRole('student'))
-    @extends('student.layouts.student')
-@endif
+@extends('student.layouts.student')
+
 
 
 @section('title', 'Change Password')
 
 @section('content')
 <div class="page-header clearfix"></div>
+<div class="margin-top-50">
     @include('error')
     @if( Session::has( 'success' ))
         <div class="alert alert-success alert-dismissable">
@@ -46,4 +42,5 @@
             </div>
         </div>
     </form>
+</div>
 @endsection

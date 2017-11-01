@@ -81,8 +81,8 @@ class DashboardController extends Controller
             $data = SubCategoryFile::orderBy('id', 'desc')->where('sub_category_id', $id)->get();
             foreach($data as $subCategoryFile){
                 $str = $subCategoryFile->file;
-                $str = explode('_', $str);
-                $subCategoryFiles[$subCategoryFile->id] = $str[0].'.pdf';
+                //$str = explode('_', $str);
+                $subCategoryFiles[$subCategoryFile->id] = $str;
             }
             $subCategory = $subCategory->toArray();
             $tests = Question::select('test_id', 'sub_category_id')->where('sub_category_id', $id)->get()->toArray();

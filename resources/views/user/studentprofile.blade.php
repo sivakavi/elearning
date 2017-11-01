@@ -1,17 +1,11 @@
-@if (Auth::user() &&  Auth::user()->hasRole('adminisrator'))
-    @extends('admin.layouts.admin')
-@elseif(Auth::user() &&  Auth::user()->hasRole('staff'))
-    @extends('staff.layouts.staff')
-@elseif(Auth::user() &&  Auth::user()->hasRole('student'))
-    @extends('student.layouts.student')
-@endif
-
+@extends('student.layouts.student')
 
 @section('title', 'Profile')
 
 @section('content')
-<div class="page-header clearfix">
-    <div class="x_content margin-top-30">
+
+<div class="page-header clearfix"></div>
+    <div class="margin-top-50">
         <table class="table table-bordered">
             <tbody>
                 <tr>
@@ -34,5 +28,5 @@
             </tbody>
         </table>
     </div>
-</div>
+
 @endsection

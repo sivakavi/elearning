@@ -67,12 +67,20 @@ class UserController extends BaseControllers
 
     public function changePassword()
     {
-        return view('user.changepassword');
+      if (Auth::user() &&  Auth::user()->hasRole('administrator'))
+          return view('user.adminchangepassword');
+      elseif(Auth::user() &&  Auth::user()->hasRole('staff'))
+          return view('user.staffchangepassword');
+      elseif(Auth::user() &&  Auth::user()->hasRole('student'))
+          return view('user.studentchangepassword');
     }
 
     public function profile()
     {
         $user = Auth::user();
-        return view('user.profile', compact('user'));
+        if(Auth::user() &&  Auth::user()->hasRole('staff'))
+            return view('user.staffprofile', compact('user'));
+        elseif(Auth::user() &&  Auth::user()->hasRole('student'))
+            return view('user.studentprofile', compact('user'));
     }
 }
