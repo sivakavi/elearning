@@ -73,6 +73,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('getGroup', 'AssignController@getGroup')->name('assigns.getGroup');
 
     Route::post('userImport', 'UserController@importExcel')->name('users.importExcel');
+
+    Route::get('userExport', 'UserController@exportExcel')->name('users.exportExcel');
     
     Route::post('questionImport', 'QuestionController@importExcel')->name('question.importExcel');
 

@@ -5,9 +5,11 @@
 @section('content')
     <div class="page-header clearfix">
         <h1>
+            <a class="btn btn-success pull-left" href="{{ route('admin.users.exportExcel') }}?college_id={{$_GET['college_id']}}&group_id={{$_GET['group_id']}}">Export Student</a>
+        </h1>
+        <h1>
             <a class="btn btn-success pull-right" href="{{ route('admin.users.create') }}?role=student"><i class="glyphicon glyphicon-plus"></i> Create Student</a>
         </h1>
-
     </div>
     @if($users->count())
     <div class="row">

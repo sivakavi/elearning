@@ -168,6 +168,37 @@ class UserController extends BaseControllers
         //
     }
 
+    public function exportExcel(Request $request)
+    {
+        $college_id = $request->input('college_id');
+        $group_id = $request->input('group_id');
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'student');})->where('college_id', $college_id)->where('group_id', $group_id)->get();
+        foreach ($users as $key => $value) {
+            $userDetails[$key]['firstname'] = $value->contact->fname;
+            $userDetails[$key]['lastname'] = $value->contact->lname;
+            $userDetails[$key]['dateofbirth'] = $value->contact->dob;
+            $userDetails[$key]['contactemail'] = $value->contact->cemail;
+            $userDetails[$key]['phonenumber'] = $value->contact->phno;
+            $userDetails[$key]['address'] = $value->contact->address;
+            $userDetails[$key]['emergecy_contact_person'] = $value->contact->emergency_person;
+            $userDetails[$key]['emergecy_contact_person_number'] = $value->contact->emergency_contact_no;
+
+            $userDetails[$key]['firstname'] = $value->name;
+            $userDetails[$key]['official_email'] = $value->email;
+            $userDetails[$key]['password'] = "a123456";
+            $userDetails[$key]['active'] = $value->active;
+            $userDetails[$key]['confirmed'] = $value->confirmed;
+            $userDetails[$key]['college_id'] = $value->college_id;
+            $userDetails[$key]['group_id'] = $value->group_id;
+        }
+        \Excel::create('items', function($excel) use($userDetails) {
+            $excel->sheet('ExportFile', function($sheet) use($userDetails) {
+                $sheet->fromArray($userDetails);
+            });
+        })->export('xlsx');
+    }
+
     public function importExcel(Request $request)
 	{
         $validator = Validator::make($request->all(), [
